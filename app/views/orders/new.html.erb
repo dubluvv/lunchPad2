@@ -6,9 +6,9 @@
 	 			<%= f.hidden_field :status, value: "in asteptare" %>
 	 			<%= f.select(:menu_id, Menu.where("created_at >= :today", {today: Date.today}).collect {"|a| [a.title, a.id]"}) %>
 	 			<%= f.hidden_field :user_id, value: current_user.id %>
-		  	<%= f.submit "I want this", class: "btn-submit" %>
+		  	<%= f.submit "Comanda", class: "btn-submit" %>
  			<% end %>
     </div>
   </div>
-  <%= link_to 'Back', menus_path %>
+  <%= link_to 'Inapoi la meniuri', menus_path %>
 </div>

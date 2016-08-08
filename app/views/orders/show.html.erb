@@ -1,2 +1,2 @@
-<p><b><%= @order.user.first_name %></b> a comandat <b><%= @order.menu.title %></b>, iar comanda este <b><%= @order.status %></b>.</p>
+<p>Comanda avand codul de identificare <b><%= @order.id %>-<%= @order.menu.id %> (<%= @order.menu.title %>)</b> pe numele <b><%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></b> este <b><%= @order.status %></b>.</p>
 <%= link_to 'Inapoi', '/menus' %>

@@ -4,8 +4,7 @@
 <% if @user.errors.any? %>
 	<div id="error_explanation">
 	  <h2>
-	    <%= pluralize(@user.errors.count, 'error') %> prohibited
-	    this user from being saved:
+	    S-au gasit <%= pluralize(@user.errors.count, 'error') %> erori la salvare: 
 	  </h2>
 	  <ul>
 	    <% @user.errors.full_messages.each do |msg| %>
@@ -14,12 +13,12 @@
 	  </ul>
 	</div>
 	<% end %>
-	<%= f.text_field :first_name, :placeholder => "Prenume" %>
-	<%= f.text_field :last_name, :placeholder => "Nume" %>
-	<%= f.email_field :email, :placeholder => "Email" %>
+	<%= f.text_field :first_name.downcase, :placeholder => "Prenume" %>
+	<%= f.text_field :last_name.downcase, :placeholder => "Nume" %>
+	<%= f.email_field :email.downcase, :placeholder => "Email" %>
 	<%= f.password_field :password, :placeholder => "Parola" %>
 	<%= f.text_field :phone, :placeholder => "Numar telefon" %>
-	<%= f.text_field :address, :placeholder => "Adresa" %>
+	<%= f.text_field :address.downcase, :placeholder => "Adresa" %>
 	<%= f.submit "Submit" %>
 	<br/> 
 	<%= link_to 'Inapoi', menus_path %>

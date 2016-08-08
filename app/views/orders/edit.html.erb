@@ -1,5 +1,5 @@
-<h1>Editing order</h1>
-<p><%= @order.user.first_name %> <%= @order.user.last_name %></p>
+<h1>Editare comanda</h1>
+<p><%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></p>
 <p><%= @order.menu.title %></p>
 
 <%= form_for @order do |each| %>
@@ -7,4 +7,4 @@
 	<%= each.submit "Livreaza" %>
 <% end %>
 <br/>
-<%= link_to 'Back', menus_path %>
+<%= link_to 'Inapoi la meniuri', menus_path %>

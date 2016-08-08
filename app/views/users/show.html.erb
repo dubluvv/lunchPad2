@@ -1,14 +1,14 @@
 <p>
   <strong>Prenume:</strong>
-  <%= @user.first_name %>
+  <%= @user.first_name.downcase %>
 </p>
 <p>
   <strong>Nume:</strong>
-  <%= @user.last_name %>
+  <%= @user.last_name.downcase %>
 </p>
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @user.email.downcase %>
 </p>
 <p>
   <strong>Telefon:</strong>
@@ -21,7 +21,7 @@
 <% if current_user && current_user.is_admin? %>
   <p>
     <strong>Role:</strong>
-    <%= @user.role %>
+    <%= @user.role.downcase %>
   </p>  
 <% end %>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pass</title>
+  <title>lunchPad NinjasTeam</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,12 +11,12 @@
   <ul class = "login"> 
     <li><%= link_to 'Editeaza', edit_user_path(current_user.id) %></li>
     <li><%= current_user.email %></li> 
-    <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+    <li><%= link_to "Deconecteaza", logout_path, method: "delete" %></li> 
   </ul> 
 <% else %> 
   <ul class = "login"> 
-    <li><%= link_to "Login", login_path %></a></li> 
-    <li><%= link_to "Signup", 'signup' %></a></li> 
+    <li><%= link_to "Autentificare", login_path %></a></li> 
+    <li><%= link_to "Creaza cont", 'signup' %></a></li> 
   </ul> 
 <% end %>
 <%= yield %>

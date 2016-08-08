@@ -30,6 +30,13 @@ module Lunch
         Order.all
       end
 
+      desc ' post order'
+      post '/status' do
+        @code = params[:code].partition('-').first
+        @order = Order.find_by_id(@code)
+        return "Comanda cu id-ul #{@order.id} este #{@order.status}."
+      end
+
       desc ' post'
       post do
         @order = Order.create!({

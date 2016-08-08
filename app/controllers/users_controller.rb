@@ -19,9 +19,7 @@ class UsersController < ApplicationController
 	@user = User.new(user_params) 
 		if @user.save
 			session[:user_id] = @user.id 
-			# byebug
 			MyMailer.delay.new_registration(@user)
-			# MyMailer.to(@user.email).subject_email("test").deliver!
 			redirect_to '/menus' 
 		else
 			render 'new'

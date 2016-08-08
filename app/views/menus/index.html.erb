@@ -1,5 +1,5 @@
 <% if current_user %>
-<table border=1>
+<table>
   <tr>
     <th>ID</th>
     <th>Meniu</th>
@@ -7,7 +7,7 @@
     <th>Felul 2</th>
     <th>Desert</th>
     <% if current_user && current_user.is_admin? %>
-      <th colspan="3">Comenzi</th>
+      <th> </th>
       <% else %>
       <th>Comenzi</th>
     <% end %>
@@ -64,17 +64,17 @@
       <th>Nume</th>
       <th>Comanda</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="3"> </th>
     </tr>
     <% @orders.each do |ord| %>
       <tr>
         <td><%= ord.id %></td>
         <td>
          <% if current_user.is_admin? %>
-         
+         (<%= ord.user.id %>)
           <%end%>
-          <%= ord.user.first_name %>
-          <%= ord.user.last_name %>
+          <%= ord.user.first_name.capitalize %>
+          <%= ord.user.last_name.capitalize %>
         </td>
         <td><%= ord.menu.title %></td>
         <td><%= ord.status %></td>
@@ -87,6 +87,9 @@
       </tr>
     <% end %>
   </table>
+  <% if current_user.is_admin? %>
+  <%= link_to 'Detalii comenzi', '/orders' %>
+  <% end %>
 <br />
 <p><b><u>Lista utilizatori</u></b></p>
 <table>
@@ -95,20 +98,14 @@
       <td>Prenume</td>
       <td>Nume</td>
       <td>E-mail</td>
-      <td>Telefon</td>
-      <td>Adresa</td>
-      <td>Rol</td>
-      <td colspan="4">Comenzi</td>
+      <td colspan="4"> </td>
     </tr>
       <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= user.first_name %> </td>
-        <td><%= user.last_name %> </td>
+        <td><%= user.first_name.capitalize %> </td>
+        <td><%= user.last_name.capitalize %> </td>
         <td><%= user.email %> </td>
-        <td><%= user.phone %> </td>
-        <td><%= user.address %> </td>
-        <td><%= user.role %> </td>
         <td><%= link_to 'Detalii', user_path(user) %></td>
         <% if current_user.is_admin? %> 
           <td><%= link_to 'Editeaza', edit_user_path(user) %></td>
@@ -124,7 +121,7 @@
       <% end %>
 </table>
 <br/>
- <% if current_user && current_user.is_admin? %> 
-<%= link_to 'Creaza user', new_user_path %>
+<% if current_user && current_user.is_admin? %> 
+  <%= link_to 'Creaza user', new_user_path %>
 <% end %>
 <%end%>

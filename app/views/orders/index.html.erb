@@ -1,27 +1,41 @@
-<p style="display:none"><%= i=1 %></p>
 <table>
+	<tr>
+		<td>ID</td>
+		<td>Nume utilizator</td>
+		<td>Denumire meniu</td>
+		<td>Felul 1</td>
+		<td>Felul 2</td>
+		<td>Desert</td>
+		<td>Status comanda</td>
+		<td>Adresa de livrare</td>
+		<td>Telefon</td>
+		<td>Sterge comanda</td>
+	</tr>
+	<% Order.all.each do |ord| %>
 		<tr>
-			<td>ID</td>
-			<td>First Name</td>
-			<td>Last Name</td>
-			<td>E-mail</td>
-			<td>Phone</td>
-			<td>Address</td>
-			<td>Rol</td>
+			<td><%= ord.id %></td>
+			<td><%= ord.user.first_name.capitalize %> <%= ord.user.last_name.capitalize %></td>
+			<td><%= ord.menu.title %></td>
+			<td><%= ord.menu.d1 %></td>
+			<td><%= ord.menu.d2 %></td>
+			<td><%= ord.menu.desert %></td>
+			<td>
+				<% if ord.status != "livrata" %>
+					<%= form_for ord do |each| %>
+						<%= each.hidden_field :status, value: "livrata" %>
+						<%= each.submit "Livreaza" %>
+					<% end %>
+					<% else %>
+				<%= ord.status %>
+				<% end %>
+			</td>
+			<td><%= ord.user.address %></td>
+			<td><%= ord.user.phone %></td>
+			<td><%= link_to 'Sterge', order_path(ord),
+              method: :delete,
+              data: { confirm: 'Zi zau!' } %></td>
 		</tr>
-			<% @users.each do |user| %>
-			<tr>
-				<td><%= i %></td>
-				<td><% user %> </td>
-				<td><% user.last_name %> </td>
-				<td><% user.email %> </td>
-				<td><% user.phone %> </td>
-				<td><% user.address %> </td>
-				<td><% user.role %> </td>
-				<p style="display:none"><%= i+=1 %></p>
-			</tr>
-			<% end %>
+	<% end %>
 </table>
 
-<p><% User.find_by_id(14).phone %></p>
-<%= link_to 'Back', menus_path %>
+<%= link_to 'Inapoi la meniuri', menus_path %>
