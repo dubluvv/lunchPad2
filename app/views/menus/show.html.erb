@@ -1,0 +1,20 @@
+<p>
+  <strong>Title:</strong>
+  <%= @menu.title %>
+</p>
+ 
+<p>
+  <strong>Dish1:</strong>
+  <%= @menu.d1 %>
+</p>
+<p>
+  <strong>Text:</strong>
+  <%= @menu.d2 %>
+</p>
+<p>
+  <strong>Text:</strong>
+  <%= @menu.desert %>
+</p>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>

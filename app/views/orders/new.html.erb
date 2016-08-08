@@ -1,0 +1,14 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+	    <h1>Take my order</h1>
+	    <%= form_for @order do |f| %>
+	 			<%= f.hidden_field :status, value: "in asteptare" %>
+	 			<%= f.select(:menu_id, Menu.where("created_at >= :today", {today: Date.today}).collect {"|a| [a.title, a.id]"}) %>
+	 			<%= f.hidden_field :user_id, value: current_user.id %>
+		  	<%= f.submit "I want this", class: "btn-submit" %>
+ 			<% end %>
+    </div>
+  </div>
+  <%= link_to 'Back', menus_path %>
+</div>

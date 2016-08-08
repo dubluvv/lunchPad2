@@ -1,0 +1,10 @@
+<h1>Editing order</h1>
+<p><%= @order.user.first_name %> <%= @order.user.last_name %></p>
+<p><%= @order.menu.title %></p>
+
+<%= form_for @order do |each| %>
+	<%= each.hidden_field :status, value: "livrata" %>
+	<%= each.submit "Livreaza" %>
+<% end %>
+<br/>
+<%= link_to 'Back', menus_path %>

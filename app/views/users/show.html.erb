@@ -1,0 +1,31 @@
+<p>
+  <strong>Prenume:</strong>
+  <%= @user.first_name %>
+</p>
+<p>
+  <strong>Nume:</strong>
+  <%= @user.last_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Telefon:</strong>
+  <%= @user.phone %>
+</p>
+<p>
+  <strong>Adresa:</strong>
+  <%= @user.address %>
+</p>
+<% if current_user && current_user.is_admin? %>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>  
+<% end %>
+
+<%= link_to 'Inapoi', menus_path %>
+<% if current_user.is_admin? || current_user.id == @user.id %> 
+| <%= link_to 'Editeaza', edit_user_path(@user) %>
+<% end %>

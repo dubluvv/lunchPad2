@@ -1,0 +1,130 @@
+<% if current_user %>
+<table border=1>
+  <tr>
+    <th>ID</th>
+    <th>Meniu</th>
+    <th>Felul 1</th>
+    <th>Felul 2</th>
+    <th>Desert</th>
+    <% if current_user && current_user.is_admin? %>
+      <th colspan="3">Comenzi</th>
+      <% else %>
+      <th>Comenzi</th>
+    <% end %>
+  </tr>
+    <% Menu.where("created_at >= :today", {today: Date.today}).each do |menu| %>
+      <tr>
+        <td><%= menu.id %></td>
+        <td><%= menu.title %></td>
+        <td><%= menu.d1 %></td>
+        <td><%= menu.d2 %></td>
+        <td><%= menu.desert %></td>
+        <% if current_user.is_admin? %> 
+          <td><%= link_to 'Editeaza', edit_menu_path(menu) %></td>
+          <td><%= link_to 'Sterge', menu_path(menu),
+                  method: :delete,
+                  data: { confirm: 'Zi zau!' } %></td>
+        <% end %>
+        <td>
+        <%= form_for Order.new do |f| %>
+          <%= f.hidden_field :status, value: "in asteptare" %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :menu_id, value: menu.id %>
+          <%= f.submit 'Comanda' %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="8"> <b><center>Meniuri din zilele trecute</center></b> </td>
+    </tr>
+    <% Menu.where("created_at <= :today", {today: Date.today}).each do |menu| %>
+      <tr>
+        <td><%= menu.id %></td>
+        <td><%= menu.title %></td>
+        <td><%= menu.d1 %></td>
+        <td><%= menu.d2 %></td>
+        <td colspan="2"><%= menu.desert %></td>
+        <% if current_user.is_admin? %> 
+          <td><%= link_to 'Editeaza', edit_menu_path(menu) %></td>
+          <td><%= link_to 'Sterge', menu_path(menu),
+                  method: :delete,
+                  data: { confirm: 'Zi zau!' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table><br/>
+  <% if current_user && current_user.is_admin? %> 
+    <%= link_to 'Creaza meniu', new_menu_path %><br/>
+  <%end%>
+<br />
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nume</th>
+      <th>Comanda</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+    <% @orders.each do |ord| %>
+      <tr>
+        <td><%= ord.id %></td>
+        <td>
+         <% if current_user.is_admin? %>
+         
+          <%end%>
+          <%= ord.user.first_name %>
+          <%= ord.user.last_name %>
+        </td>
+        <td><%= ord.menu.title %></td>
+        <td><%= ord.status %></td>
+        <% if current_user && current_user.is_admin? %>
+          <td><%= link_to 'Editeaza', edit_order_path(ord) %></td>
+          <td><%= link_to 'Sterge', order_path(ord),
+              method: :delete,
+              data: { confirm: 'Zi zau!' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+<br />
+<p><b><u>Lista utilizatori</u></b></p>
+<table>
+    <tr>
+      <td>ID</td>
+      <td>Prenume</td>
+      <td>Nume</td>
+      <td>E-mail</td>
+      <td>Telefon</td>
+      <td>Adresa</td>
+      <td>Rol</td>
+      <td colspan="4">Comenzi</td>
+    </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %> </td>
+        <td><%= user.last_name %> </td>
+        <td><%= user.email %> </td>
+        <td><%= user.phone %> </td>
+        <td><%= user.address %> </td>
+        <td><%= user.role %> </td>
+        <td><%= link_to 'Detalii', user_path(user) %></td>
+        <% if current_user.is_admin? %> 
+          <td><%= link_to 'Editeaza', edit_user_path(user) %></td>
+          <td>
+            <% if current_user.email != user.email %>
+              <%= link_to 'Sterge', user_path(user),
+                method: :delete,
+                data: { confirm: 'Zi zau!' } %>          
+            <% end %>
+          </td>
+        <%end%>
+      </tr>
+      <% end %>
+</table>
+<br/>
+ <% if current_user && current_user.is_admin? %> 
+<%= link_to 'Creaza user', new_user_path %>
+<% end %>
+<%end%>

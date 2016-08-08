@@ -1,0 +1,27 @@
+<p style="display:none"><%= i=1 %></p>
+<table>
+		<tr>
+			<td>ID</td>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>E-mail</td>
+			<td>Phone</td>
+			<td>Address</td>
+			<td>Rol</td>
+		</tr>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= i %></td>
+				<td><% user %> </td>
+				<td><% user.last_name %> </td>
+				<td><% user.email %> </td>
+				<td><% user.phone %> </td>
+				<td><% user.address %> </td>
+				<td><% user.role %> </td>
+				<p style="display:none"><%= i+=1 %></p>
+			</tr>
+			<% end %>
+</table>
+
+<p><% User.find_by_id(14).phone %></p>
+<%= link_to 'Back', menus_path %>

@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* html, body {
+  background: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+table#users {
+  display: none;
+}
+p#users {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  max-width: 110px;
+}
+.container {
+  padding: 0;
+  width: 100%;
+}
+.album-info p {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+.login li{
+  color: red;
+  float: left;
+  list-style: none;
+  margin: 0 5px;
+} 
+.item {
+  margin: 0;  
+  padding: 0;
+}
+
+.item:hover a {
+  color: #c91717;
+  text-decoration: none;
+}
+.form, .login {
+  text-align:center;
+  margin: 0 auto 10px;
+  padding: 20px 0 10px 0;
+  font-size: 16px;
+  width: 300px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=submit] {
+  color: #666666;
+  width: 300px;
+  font-size: large;
+  border: 1px solid #E6E6E6;
+  border-radius: 5px;
+  margin: 0px auto;
+  text-indent: 10px;
+  display: block;
+}
+
+input[type=submit].btn-submit {
+  color: #FFFFFF;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: #c91717;
+  padding: 10px 20px;
+  border: 0;
+  margin-top: 6px;
+  cursor: pointer;
+}
+input[type=submit].btn-index {
+  width: 120px;
+  text-indent: 0;
+  cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+  .img-container img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .pull-right {
+    background-color: #f1f2f2;
+    position: relative;
+    margin: 0;
+    width: 100%;
+  }
+
+  .pull-right ul {
+    margin: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-before: 0;
+    -webkit-padding-start: 0;
+  }
+
+  .pull-right ul li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    width: 50%;
+  }
+
+  .pull-right ul li a {
+    display: block;
+    width: 100%;
+  }
+
+  .img-container {
+    height: 200px;
+  }
+}
+
+*/
